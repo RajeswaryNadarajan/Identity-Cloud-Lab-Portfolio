@@ -78,7 +78,9 @@ A dedicated Finance OU was created in Active Directory to organize and manage Fi
 
 This provides a logical administrative structure for department-based user management.
 
-> Screenshot evidence will be added here.
+![Active Directory Environment](screenshots/01-active-directory-environment.jpeg)
+
+![Finance OU Creation](screenshots/02-finance-ou-creation.jpeg)
 
 ---
 
@@ -88,7 +90,9 @@ New employee accounts were created within the Finance OU in Active Directory.
 
 The accounts represented newly joined employees requiring access to the organization's Microsoft 365 environment.
 
-> Screenshot evidence will be added here.
+> ![Finance User - David Christie](screenshots/03-finance-user-david-christie.jpeg)
+
+![Finance User - Sheila Thomas](screenshots/04-finance-user-sheila-thomas.jpeg)
 
 ---
 
@@ -102,7 +106,12 @@ Relevant employee information was configured for the user accounts, including at
 
 Maintaining accurate identity attributes is important for administration, access management, automation, and identity lifecycle processes.
 
-> Screenshot evidence will be added here.
+> ![User Properties](screenshots/05-user-properties.jpeg)
+
+![Manager Attribute Configuration](screenshots/06-manager-attribute.jpeg)
+
+![User Organization Attributes](screenshots/07-user-organization-attributes.jpeg)
+
 
 ---
 
@@ -112,7 +121,8 @@ After the on-premises identities were prepared, Microsoft Entra Connect was used
 
 A delta synchronization was triggered to process the newly created and modified identity objects.
 
-> Screenshot evidence will be added here.
+> ![Microsoft Entra Connect Delta Synchronization](screenshots/08-entra-connect-delta-sync.jpeg)
+
 
 ---
 
@@ -122,7 +132,7 @@ After synchronization completed, the cloud environment was checked to confirm th
 
 Validation was performed through the Microsoft cloud administration portals.
 
-> Screenshot evidence will be added here.
+> ![Microsoft 365 Synchronized Users](screenshots/09-m365-synchronized-users.jpeg)
 
 ---
 
@@ -130,7 +140,8 @@ Validation was performed through the Microsoft cloud administration portals.
 
 The required Microsoft 365 license was assigned to the synchronized users so that they could access the appropriate Microsoft 365 services.
 
-> Screenshot evidence will be added here.
+> ![Microsoft 365 License Assignment](screenshots/10-m365-license-assignment.jpeg)
+
 
 ---
 
@@ -140,7 +151,12 @@ MFA was configured as part of securing access to the users' Microsoft 365 identi
 
 This provides an additional authentication factor beyond the user's password.
 
-> Screenshot evidence will be added here.
+> ![MFA Registration Prompt](screenshots/11-mfa-registration-prompt.jpeg)
+
+![Microsoft Authenticator Registration](screenshots/12-authenticator-registration.jpeg)
+
+![MFA Registration Successful](screenshots/13-mfa-registration-success.jpeg)
+
 
 ---
 
