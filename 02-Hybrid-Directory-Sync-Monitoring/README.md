@@ -94,6 +94,7 @@ The following areas were checked:
 - Synchronization errors
 
 This provides administrators with visibility into whether identities are successfully synchronizing between the on-premises and cloud environments.
+![Microsoft 365 Directory Sync Status](screenshots/02-m365-directory-sync-status.png)
 
 ---
 
@@ -104,7 +105,7 @@ The Microsoft Entra Admin Center was used to further validate the Microsoft Entr
 The synchronization information was reviewed to confirm that the hybrid identity connection between Active Directory and Microsoft Entra ID was operational.
 
 This validation provides an additional administrative view for monitoring the organization's hybrid identity environment.
-
+![Microsoft Entra Connect Sync Validation](screenshots/03-entra-connect-sync-validation.png)
 ---
 
 ## ✅ Validation Results
