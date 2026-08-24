@@ -1,4 +1,4 @@
-# Hybrid Directory Synchronization Monitoring and Validation with Microsoft Entra Connect
+#Hybrid Directory Synchronization Monitoring and Validation with Microsoft Entra Connect
 
 ## 📌 Project Overview
 
