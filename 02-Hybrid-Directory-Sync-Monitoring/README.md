@@ -76,6 +76,7 @@ Microsoft Entra Connect was configured to establish synchronization between the 
 The appropriate Organizational Unit synchronization scope was selected so that only the required identities would be included in the synchronization process.
 
 Password Hash Synchronization was also enabled as part of the hybrid identity configuration.
+![Microsoft Entra Connect Setup](screenshots/01-entra-connect-download.png)
 
 ---
 
