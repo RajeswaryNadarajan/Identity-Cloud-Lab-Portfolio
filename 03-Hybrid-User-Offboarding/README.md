@@ -57,7 +57,7 @@ The resigned employee account was located in Active Directory Users and Computer
 
 The account was disabled to prevent the user from continuing to authenticate using the organizational identity.
 
-> Screenshot evidence will be added here.
+>![Microsoft 365 Active User Before Offboarding](screenshots/01-m365-active-user-before-offboarding.png)
 
 ---
 
@@ -67,7 +67,7 @@ A dedicated **Disabled Users** Organizational Unit was created in Active Directo
 
 This provides a structured location for separating inactive or resigned employee accounts from active user accounts.
 
-> Screenshot evidence will be added here.
+> ![Disabled Users OU Creation](screenshots/02-disabled-users-ou-creation.png)
 
 ---
 
@@ -77,7 +77,7 @@ After disabling the account, the resigned employee identity was moved into the *
 
 This helps maintain a clear administrative structure and separates inactive identities from active employees.
 
-> Screenshot evidence will be added here.
+>![User Moved to Disabled Users OU](screenshots/03-user-moved-to-disabled-users-ou.png)
 
 ---
 
@@ -87,7 +87,7 @@ After completing the Active Directory changes, a delta synchronization was initi
 
 This allows the offboarding changes made in the on-premises directory to be synchronized to the Microsoft cloud identity environment.
 
-> Screenshot evidence will be added here.
+> ![Delta Directory Synchronization](screenshots/04-delta-directory-synchronization.png)
 
 ---
 
@@ -97,7 +97,7 @@ The Microsoft 365 environment was reviewed after synchronization to verify the s
 
 The account status was checked to confirm that the offboarding change had been reflected in the cloud environment.
 
-> Screenshot evidence will be added here.
+> ![Microsoft 365 Deleted User Validation](screenshots/05-m365-deleted-user-validation.png)
 
 ---
 
