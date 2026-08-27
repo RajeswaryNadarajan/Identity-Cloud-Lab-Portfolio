@@ -52,8 +52,7 @@ configuring the expiration policy.
 This helped confirm the available group types and identify the Microsoft 365
 group that would be used for lifecycle testing.
 
-> Screenshot evidence will be added here.
-
+> ![Review Existing Groups](screenshots/01-review-existing-groups.png)
 ---
 
 ## Step 2 — Open Group Expiration Settings
@@ -65,7 +64,7 @@ The Microsoft Entra Admin Center was used to navigate to:
 The expiration configuration provides centralized lifecycle management for
 Microsoft 365 groups.
 
-> Screenshot evidence will be added here.
+> ![Open Group Expiration Settings](screenshots/02-open-group-expiration-settings.png)
 
 ---
 
@@ -80,7 +79,7 @@ sent when a group does not have an available owner.
 The expiration policy was configured to apply to selected Microsoft 365 groups
 rather than automatically applying to every group in the tenant.
 
-> Screenshot evidence will be added here.
+> ![Configure Group Expiration Policy](screenshots/03-configure-group-expiration-policy.png)
 
 ---
 
@@ -92,7 +91,7 @@ policy.
 The group provides a controlled object that can be added to the expiration
 policy without affecting other groups in the tenant.
 
-> Screenshot evidence will be added here.
+> ![Create Microsoft 365 Test Group](screenshots/04-create-m365-test-group.png)
 
 ---
 
@@ -105,7 +104,7 @@ The newly created test group was selected and added to the policy.
 This ensures that the group becomes subject to the configured lifecycle and
 renewal requirements.
 
-> Screenshot evidence will be added here.
+> ![Select Group for Expiration](screenshots/05-select-group-for-expiration.png)
 
 ---
 
@@ -121,7 +120,7 @@ Validation confirmed that:
 - The policy was scoped to selected Microsoft 365 groups
 - The test Microsoft 365 group was successfully included in the expiration policy
 
-> Screenshot evidence will be added here.
+> ![Validate Group Expiration Policy](screenshots/06-validate-expiration-policy.png)
 
 ---
 
