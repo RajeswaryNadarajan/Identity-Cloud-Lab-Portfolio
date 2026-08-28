@@ -55,7 +55,7 @@ custom banned password list.
 This configuration prevents users from selecting passwords containing banned
 variations of the configured term.
 
-> Screenshot evidence will be added here.
+> 01-configure-custom-banned-password.png
 
 ---
 
@@ -66,7 +66,7 @@ The Password Protection policy was saved after completing the configuration.
 The successful save notification was used to confirm that the password
 protection policy had been updated.
 
-> Screenshot evidence will be added here.
+>02-save-and-validate-password-protection-policy.png
 
 ---
 
