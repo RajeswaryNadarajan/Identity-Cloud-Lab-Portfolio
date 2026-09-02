@@ -1,4 +1,4 @@
-# Project 06 — Microsoft Entra Privileged Identity Management (PIM) with Group-Based Role Assignment
+# 06 — Microsoft Entra Privileged Identity Management (PIM) with Group-Based Role Assignment
 
 ## Project Overview
 
