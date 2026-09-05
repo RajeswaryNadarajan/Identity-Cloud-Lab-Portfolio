@@ -46,7 +46,8 @@ During the first sign-in, the user was prompted to set up additional authenticat
 
 I configured Microsoft Authenticator for the test account.
 
-![Security Registration](screenshots/02-security-registration.png)
+![Security Registration](screenshots/02-mfa-registration-prompt.png)
+
 
 I continued with the Microsoft Authenticator setup.
 
