@@ -36,7 +36,7 @@ I created a new test user in Microsoft Entra ID.
 
 The account was created as a Member user.
 
-![Test User](screenshots/01-test-user-created.png)
+![Test User Created](screenshots/01-create-test-user.png)
 
 ---
 
