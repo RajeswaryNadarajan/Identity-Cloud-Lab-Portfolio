@@ -98,7 +98,7 @@ The user initially had:
 
 This confirmed that no Microsoft 365 license was assigned to the test account.
 
-![Before License Assignment](screenshots/10-before-license-assignment.png)
+
 
 I also verified the user's license status from the account details.
 
