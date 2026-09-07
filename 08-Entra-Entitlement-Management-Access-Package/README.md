@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-This project demonstrates the design, implementation, and end-to-end testing of a **Microsoft Entra Entitlement Management Access Package** for an internal IDAM team onboarding scenario.
+This project demonstrates the design, implementation, troubleshooting, and end-to-end validation of a **Microsoft Entra Entitlement Management Access Package** for an internal IDAM team onboarding scenario.
 
 The objective was to simplify and govern access provisioning for new team members who require multiple groups, enterprise applications, SharePoint permissions, and privileged group access.
 
-Instead of manually assigning every resource to each new employee, the required access is bundled into a single access package and controlled through:
+Instead of manually assigning each resource to every new employee, the required access is bundled into a single access package and governed through:
 
 - Requestor restrictions
 - Multi-stage approval
@@ -18,7 +18,7 @@ Instead of manually assigning every resource to each new employee, the required 
 
 The business scenario represents onboarding **20 new IDAM team members** with the same access requirements.
 
-For lab validation, one test account was used to complete the entire request-to-access workflow.
+For end-to-end lab validation, one test account was used to complete the full request, approval, provisioning, and access-validation workflow.
 
 ---
 
@@ -26,7 +26,7 @@ For lab validation, one test account was used to complete the entire request-to-
 
 Assume 20 new employees are joining the **IDAM department**.
 
-Each employee requires access to:
+Each employee requires access to the following resources.
 
 ### Microsoft Entra Administrative Roles
 
@@ -52,13 +52,11 @@ Eight groups are required:
 - 2 Eligible Member assignments
 - 2 Eligible Owner assignments
 
-The privileged/eligible assignments are managed using **Microsoft Entra Privileged Identity Management (PIM) for Groups**.
+The eligible assignments are managed using **Microsoft Entra Privileged Identity Management (PIM) for Groups**.
 
 ---
 
 # Governance Requirements
-
-The access process must meet the following requirements:
 
 | Requirement | Configuration |
 |---|---|
@@ -72,7 +70,7 @@ The access process must meet the following requirements:
 | Access duration | 45 days |
 | Extension allowed | Yes |
 | Extension approval | No |
-| Privileged access | PIM Eligible Member/Owner |
+| Privileged group access | PIM Eligible Member/Owner |
 
 ---
 
@@ -91,7 +89,7 @@ The access process must meet the following requirements:
 
 ---
 
-# Implementation Steps
+# Implementation
 
 ## Step 1 – Create Identity Governance Catalog
 
@@ -118,11 +116,17 @@ Configure:
 - Enabled for users to request: **Yes**
 - Enabled for external users to request: **No**
 
-Select:
-
-**Create**
+Select **Create**.
 
 The dedicated Identity Governance catalog is now available for the IDAM access package.
+
+### Implementation Evidence
+
+![Project 8 - Part 1 Screenshot 01](./screenshots/part-1-01.png)
+
+![Project 8 - Part 1 Screenshot 02](./screenshots/part-1-02.png)
+
+![Project 8 - Part 1 Screenshot 03](./screenshots/part-1-03.png)
 
 ---
 
@@ -139,7 +143,14 @@ Assign the administrator account as:
 **Catalog Owner**
 
 This allows the administrator to manage resources and access packages within the catalog.
-![Catalog Owner Configuration](./screenshots/part-1-02.png)
+
+### Implementation Evidence
+
+![Project 8 - Part 1 Screenshot 04](./screenshots/part-1-04.png)
+
+![Project 8 - Part 1 Screenshot 05](./screenshots/part-1-05.png)
+
+![Project 8 - Part 1 Screenshot 06](./screenshots/part-1-06.png)
 
 ---
 
@@ -167,19 +178,64 @@ Select catalog:
 
 `CAT-IDAM-Governance-Lab`
 
-The access package will act as the central entitlement bundle for IDAM team onboarding.
+The access package acts as the central entitlement bundle for IDAM team onboarding.
+
+### Implementation Evidence
+
+![Project 8 - Part 1 Screenshot 07](./screenshots/part-1-07.png)
+
+![Project 8 - Part 1 Screenshot 08](./screenshots/part-1-08.png)
+
+![Project 8 - Part 1 Screenshot 09](./screenshots/part-1-09.png)
 
 ---
 
-# Step 4 – Create Eight Security Groups
+## Step 4 – Test Microsoft Entra Administrative Role Resources
 
-Create eight security groups for the different access requirements.
+The original business requirement included:
+
+- Intune Administrator
+- Helpdesk Administrator
+
+From the access package, select:
+
+**Add resource roles → Microsoft Entra role (Preview)**
+
+Search for:
+
+`Intune Administrator`
+
+and:
+
+`Helpdesk Administrator`
+
+The shared lab tenant returned:
+
+**No resource found**
+
+The issue remained even after validating the administrative permissions and Catalog Owner assignment.
+
+Therefore, the Entra administrative roles were documented as a **lab tenant / Preview feature limitation** rather than being represented as successfully implemented.
+
+### Troubleshooting Evidence
+
+![Project 8 - Part 1 Screenshot 10](./screenshots/part-1-10.png)
+
+![Project 8 - Part 1 Screenshot 11](./screenshots/part-1-11.png)
+
+![Project 8 - Part 1 Screenshot 12](./screenshots/part-1-12.png)
+
+---
+
+## Step 5 – Create Security Groups
+
+Eight security groups were created to represent the different entitlement requirements.
 
 Navigate to:
 
 **Microsoft Entra ID → Groups → All groups → New group**
 
-Create:
+Configure the groups as **Security** groups with **Assigned** membership.
 
 | Group | Required Access |
 |---|---|
@@ -192,52 +248,70 @@ Create:
 | LAB-IDAM-Group-07-Eligible-Owner | Eligible Owner |
 | LAB-IDAM-Group-08-Eligible-Owner | Eligible Owner |
 
-Group type:
+### Implementation Evidence
 
-**Security**
+![Project 8 - Part 1 Screenshot 13](./screenshots/part-1-13.png)
 
-Membership type:
+![Project 8 - Part 1 Screenshot 14](./screenshots/part-1-14.png)
 
-**Assigned**
+![Project 8 - Part 1 Screenshot 15](./screenshots/part-1-15.png)
+
+![Project 8 - Part 1 Screenshot 16](./screenshots/part-1-16.png)
+
+![Project 8 - Part 1 Screenshot 17](./screenshots/part-1-17.png)
+
+![Project 8 - Part 1 Screenshot 18](./screenshots/part-1-18.png)
+
+![Project 8 - Part 1 Screenshot 19](./screenshots/part-1-19.png)
+
+![Project 8 - Part 1 Screenshot 20](./screenshots/part-1-20.png)
 
 ---
 
-# Step 5 – Configure PIM for Eligible Groups
+## Step 6 – Configure PIM for Eligible Groups
 
-Groups 05–08 require privileged eligible assignments rather than permanent active access.
+Groups 05–08 require eligible access rather than permanent active access.
 
 Navigate to:
 
 **Identity Governance → Privileged Identity Management → Groups**
 
-Discover/manage the required groups through PIM.
+The required groups were brought under PIM management.
 
-Configure:
+Eligible Member groups:
 
-### Eligible Member Groups
+- `LAB-IDAM-Group-05-Eligible-Member`
+- `LAB-IDAM-Group-06-Eligible-Member`
 
-`LAB-IDAM-Group-05-Eligible-Member`
+Eligible Owner groups:
 
-`LAB-IDAM-Group-06-Eligible-Member`
+- `LAB-IDAM-Group-07-Eligible-Owner`
+- `LAB-IDAM-Group-08-Eligible-Owner`
 
-### Eligible Owner Groups
+Once the groups were PIM-managed, the access package exposed the following resource roles:
 
-`LAB-IDAM-Group-07-Eligible-Owner`
+- **Eligible Member**
+- **Eligible Owner**
 
-`LAB-IDAM-Group-08-Eligible-Owner`
+This allows privileged group access to be provided as eligibility rather than permanent active access.
 
-Once the groups are PIM-managed, the access package can use:
+### PIM Configuration Evidence
 
-- Eligible Member
-- Eligible Owner
+![Project 8 - Part 2 Screenshot 01](./screenshots/part-2-01.png)
 
-as resource roles.
+![Project 8 - Part 2 Screenshot 02](./screenshots/part-2-02.png)
 
-This provides **Just-In-Time privileged group access** instead of permanently active privileged access.
+![Project 8 - Part 2 Screenshot 03](./screenshots/part-2-03.png)
+
+![Project 8 - Part 2 Screenshot 04](./screenshots/part-2-04.png)
+
+![Project 8 - Part 2 Screenshot 05](./screenshots/part-2-05.png)
+
+![Project 8 - Part 2 Screenshot 06](./screenshots/part-2-06.png)
 
 ---
 
-# Step 6 – Add Group Resources to the Access Package
+## Step 7 – Add Group Resources to the Access Package
 
 Navigate to:
 
@@ -247,11 +321,9 @@ Select:
 
 **Add resource roles → Groups and Teams**
 
-Add the eight groups.
+The eight groups were added with the following roles:
 
-Configure the resource roles as:
-
-| Resource | Role |
+| Resource | Access Package Role |
 |---|---|
 | LAB-IDAM-Group-01-Member | Member |
 | LAB-IDAM-Group-02-Member | Member |
@@ -262,35 +334,35 @@ Configure the resource roles as:
 | LAB-IDAM-Group-07-Eligible-Owner | Eligible Owner |
 | LAB-IDAM-Group-08-Eligible-Owner | Eligible Owner |
 
-This allows one access package to deliver both normal and privileged group entitlements.
+This combines standard group access and PIM-governed eligible access within the same entitlement package.
+
+### Group Resource Evidence
+
+![Project 8 - Part 2 Screenshot 07](./screenshots/part-2-07.png)
+
+![Project 8 - Part 2 Screenshot 08](./screenshots/part-2-08.png)
+
+![Project 8 - Part 2 Screenshot 09](./screenshots/part-2-09.png)
+
+![Project 8 - Part 2 Screenshot 10](./screenshots/part-2-10.png)
 
 ---
 
-# Step 7 – Create Enterprise Applications
+## Step 8 – Create and Add Enterprise Applications
 
-Five lab enterprise applications were created:
+Five lab enterprise applications were used:
 
-`LAB-IDAM-App-01`
-
-`LAB-IDAM-App-02`
-
-`LAB-IDAM-App-03`
-
-`LAB-IDAM-App-04`
-
-`LAB-IDAM-App-05`
+- `LAB-IDAM-App-01`
+- `LAB-IDAM-App-02`
+- `LAB-IDAM-App-03`
+- `LAB-IDAM-App-04`
+- `LAB-IDAM-App-05`
 
 Navigate to:
 
 **Microsoft Entra ID → Enterprise applications**
 
-Create/configure the required lab applications.
-
----
-
-# Step 8 – Add Applications to the Access Package
-
-Navigate to:
+After creating the applications, navigate to:
 
 **Identity Governance → Access packages → AP-IDAM-Team-Access → Resource roles**
 
@@ -298,37 +370,41 @@ Select:
 
 **Add resource roles → Applications**
 
-Add:
-
-- LAB-IDAM-App-01
-- LAB-IDAM-App-02
-- LAB-IDAM-App-03
-- LAB-IDAM-App-04
-- LAB-IDAM-App-05
+Add all five applications.
 
 Assign the application role:
 
 **User**
 
-The applications are now part of the access package.
+### Application Evidence
+
+![Project 8 - Part 2 Screenshot 11](./screenshots/part-2-11.png)
+
+![Project 8 - Part 2 Screenshot 12](./screenshots/part-2-12.png)
+
+![Project 8 - Part 2 Screenshot 13](./screenshots/part-2-13.png)
+
+![Project 8 - Part 2 Screenshot 14](./screenshots/part-2-14.png)
+
+![Project 8 - Part 2 Screenshot 15](./screenshots/part-2-15.png)
 
 ---
 
-# Step 9 – Create SharePoint Sites
+## Step 9 – Create and Add SharePoint Resources
 
-Three SharePoint sites were created for the lab:
+Three SharePoint sites were created:
 
-`LAB-IDAM-SP-01`
+- `LAB-IDAM-SP-01`
+- `LAB-IDAM-SP-02`
+- `LAB-IDAM-SP-03`
 
-`LAB-IDAM-SP-02`
+The sites represent three different access levels:
 
-`LAB-IDAM-SP-03`
-
-The sites represent different permission requirements.
-
----
-
-# Step 10 – Add SharePoint Resources
+| SharePoint Resource | Permission |
+|---|---|
+| LAB-IDAM-SP-01 | Owners |
+| LAB-IDAM-SP-02 | Members |
+| LAB-IDAM-SP-03 | Visitors |
 
 Navigate to:
 
@@ -338,52 +414,27 @@ Select:
 
 **Add resource roles → SharePoint sites**
 
-Configure:
+Add the required SharePoint resources and corresponding roles.
 
-| SharePoint Resource | Permission |
-|---|---|
-| LAB-IDAM-SP-01 | Owners |
-| LAB-IDAM-SP-02 | Members |
-| LAB-IDAM-SP-03 | Visitors |
+### SharePoint Evidence
 
-This demonstrates how different SharePoint permission levels can be delivered from one governed access package.
+![Project 8 - Part 2 Screenshot 16](./screenshots/part-2-16.png)
 
----
+![Project 8 - Part 2 Screenshot 17](./screenshots/part-2-17.png)
 
-# Step 11 – Test Microsoft Entra Administrative Role Resources
+![Project 8 - Part 2 Screenshot 18](./screenshots/part-2-18.png)
 
-The original business requirement also included:
+![Project 8 - Part 2 Screenshot 19](./screenshots/part-2-19.png)
 
-- Intune Administrator
-- Helpdesk Administrator
-
-From the access package, select:
-
-**Add resource roles → Microsoft Entra role (Preview)**
-
-The following roles were searched:
-
-`Intune Administrator`
-
-`Helpdesk Administrator`
-
-However, the shared lab tenant returned:
-
-**No resource found**
-
-This continued even after the administrator had the required administrative and Catalog Owner permissions.
-
-Therefore, the Microsoft Entra role portion could not be implemented in this shared lab tenant.
-
-This limitation is documented rather than representing the roles as successfully configured.
-
-The intended production design would include these administrative role resources when supported by the tenant and licensing/Preview availability.
+![Project 8 - Part 2 Screenshot 20](./screenshots/part-2-20.png)
 
 ---
 
-# Step 12 – Create IDAM Requestor Group
+# Access Request & Approval Policy
 
-To prevent every tenant user from requesting the package, create a dedicated requestor group.
+## Step 10 – Create IDAM Requestor Group
+
+To prevent all tenant users from requesting the package, a dedicated requestor group was created.
 
 Navigate to:
 
@@ -395,29 +446,35 @@ Configure:
 
 `IDAM-Department-Users`
 
-Group type:
+**Group type**
 
-**Security**
+`Security`
 
-Membership:
+**Membership type**
 
-**Assigned**
+`Assigned`
 
 Add the test user:
 
 `Rajeswary_test1`
 
-This group represents authorized internal IDAM department employees.
+This group represents authorized internal users belonging to the IDAM department.
+
+### Requestor Group Evidence
+
+![Project 8 - Part 3 Screenshot 01](./screenshots/part-3-01.png)
+
+![Project 8 - Part 3 Screenshot 02](./screenshots/part-3-02.png)
 
 ---
 
-# Step 13 – Restrict Access Package Requestors
+## Step 11 – Restrict Access Package Requestors
 
 Navigate to:
 
 **Identity Governance → Access packages → AP-IDAM-Team-Access → Policies**
 
-Configure requestor scope:
+Configure requestor scope as:
 
 **Specific users and groups**
 
@@ -429,25 +486,29 @@ Under who can request access:
 
 **Self → Enabled**
 
-This restricts the access package to authorized IDAM department users.
+This limits self-service access requests to authorized members of the IDAM requestor group.
+
+### Request Scope Evidence
+
+![Project 8 - Part 3 Screenshot 03](./screenshots/part-3-03.png)
+
+![Project 8 - Part 3 Screenshot 04](./screenshots/part-3-04.png)
+
+![Project 8 - Part 3 Screenshot 05](./screenshots/part-3-05.png)
 
 ---
 
-# Step 14 – Configure First-Level Approval
+## Step 12 – Configure First-Level Approval
 
-Enable approval for the access package.
+Approval was enabled for the access package.
 
 Configure:
 
 **Require approval → Yes**
 
-Configure first approval stage:
+First approval stage:
 
 **Approver**
-
-Designated specific approver
-
-Lab approver:
 
 `Rajeswari-E`
 
@@ -473,21 +534,29 @@ Configure forwarding after:
 
 `3 days`
 
-This ensures the request does not remain unattended if the primary approver is unavailable.
+This prevents the request from remaining unattended if the primary approver is unavailable.
+
+### First-Level Approval Evidence
+
+![Project 8 - Part 3 Screenshot 06](./screenshots/part-3-06.png)
+
+![Project 8 - Part 3 Screenshot 07](./screenshots/part-3-07.png)
+
+![Project 8 - Part 3 Screenshot 08](./screenshots/part-3-08.png)
 
 ---
 
-# Step 15 – Configure Second-Level Approval
+## Step 13 – Configure Second-Level Approval
 
-Add a second approval stage.
+A second approval stage was configured.
+
+Second approver:
+
+**Manager as approver**
 
 Configure:
 
-**Second approver**
-
-`Manager as approver`
-
-Decision deadline:
+**Decision must be made in**
 
 `4 days`
 
@@ -495,31 +564,37 @@ Enable:
 
 **Require approver justification → Yes**
 
-Configure fallback/alternate approver:
+Fallback/alternate approver:
 
 `Dileep`
 
-This creates the intended workflow:
+The intended approval flow is:
 
-**User Request → First-Level Approval → Manager Approval**
+**User Request → First-Level Approver → Manager**
 
-with Dileep available as the fallback/alternate approver.
+If the relevant approver is unavailable or cannot act according to the configured workflow, Dileep provides the alternate/fallback approval path.
+
+### Second-Level Approval Evidence
+
+![Project 8 - Part 3 Screenshot 09](./screenshots/part-3-09.png)
+
+![Project 8 - Part 3 Screenshot 10](./screenshots/part-3-10.png)
+
+![Project 8 - Part 3 Screenshot 11](./screenshots/part-3-11.png)
 
 ---
 
-# Step 16 – Configure Access Lifecycle
+## Step 14 – Configure Access Lifecycle
 
-Configure the assignment lifecycle.
-
-Set:
+Configure:
 
 **Access package assignments expire**
 
 `Number of days`
 
-Duration:
+Set duration:
 
-`45`
+`45 days`
 
 Configure:
 
@@ -539,106 +614,141 @@ Configure:
 
 `No`
 
-This provides fixed, time-bound access while allowing the user to request an extension without another approval workflow.
+Access Reviews were not enabled for this lab.
+
+This creates a fixed 45-day entitlement lifecycle while allowing users to request an extension without another approval workflow.
+
+### Lifecycle Evidence
+
+![Project 8 - Part 3 Screenshot 12](./screenshots/part-3-12.png)
+
+![Project 8 - Part 3 Screenshot 13](./screenshots/part-3-13.png)
+
+![Project 8 - Part 3 Screenshot 14](./screenshots/part-3-14.png)
 
 ---
 
-# Step 17 – Create the Access Package Policy
+## Step 15 – Review and Create the Policy
 
-Review all configuration.
+The final policy was reviewed before creation.
 
-Confirm:
+Configuration included:
 
-- Requestor scope = IDAM department group
-- Two-stage approval = Enabled
-- First-level approver = Configured
-- Manager approval = Configured
-- Alternate/fallback approver = Dileep
-- Approval deadline = 4 days
-- Assignment duration = 45 days
-- Extension = Allowed
-- Extension approval = Not required
+- Requestor scope: `IDAM-Department-Users`
+- Self-service request: Enabled
+- Two-stage approval: Enabled
+- First-level approver: Configured
+- Manager approval: Configured
+- Alternate/fallback approver: Dileep
+- Approval decision deadline: 4 days
+- Assignment duration: 45 days
+- Extension: Allowed
+- Extension approval: Not required
 
-Create the policy/access package.
+### Policy Evidence
 
-The final package contained:
+![Project 8 - Part 3 Screenshot 15](./screenshots/part-3-15.png)
+
+![Project 8 - Part 3 Screenshot 16](./screenshots/part-3-16.png)
+
+![Project 8 - Part 3 Screenshot 17](./screenshots/part-3-17.png)
+
+---
+
+## Step 16 – Verify Final Access Package
+
+The completed access package was reviewed.
+
+Final implemented contents:
 
 - **8 Groups and Teams**
-- **5 Applications**
+- **5 Enterprise Applications**
 - **3 SharePoint resources**
 - **1 Enabled policy**
 
-Microsoft Entra roles remained at **0** due to the documented shared-tenant/Preview limitation.
+The Microsoft Entra administrative role resources remained unavailable because of the documented lab tenant/Preview limitation.
+
+### Final Configuration Evidence
+
+![Project 8 - Part 3 Screenshot 18](./screenshots/part-3-18.png)
+
+![Project 8 - Part 3 Screenshot 19](./screenshots/part-3-19.png)
+
+![Project 8 - Part 3 Screenshot 20](./screenshots/part-3-20.png)
 
 ---
 
 # End-to-End Testing
 
-## Step 18 – Sign In as the Test User
+## Step 17 – Sign In to Microsoft My Access
 
-Open a separate browser/InPrivate session.
+A separate test-user session was used.
 
-Sign in as:
+Test account:
 
 `Rajeswary_test1`
 
-Open:
-
-**My Access → Access packages**
-
-The user can see:
+The user accessed **Microsoft My Access** and located:
 
 `AP-IDAM-Team-Access`
 
-This confirms that the `IDAM-Department-Users` requestor scope is working.
+The visibility of the package to the authorized test user validates the configured requestor scope.
+
+### Test Evidence
+
+![Project 8 - Part 4 Screenshot 01](./screenshots/part-4-01.png)
+
+![Project 8 - Part 4 Screenshot 02](./screenshots/part-4-02.png)
 
 ---
 
-# Step 19 – Submit Access Request
+## Step 18 – Submit Access Request
 
-Select:
+The test user selected:
 
-**AP-IDAM-Team-Access → Request**
+`AP-IDAM-Team-Access`
 
-Requesting for:
+The request was submitted for:
 
 **Yourself**
 
-Select:
+A business justification was entered.
 
-**Continue**
+The request was then submitted through My Access.
 
-Enter a business justification.
+### Request Evidence
 
-Example used during testing:
+![Project 8 - Part 4 Screenshot 03](./screenshots/part-4-03.png)
 
-`I want to access the SharePoint resources at IDAM department`
+![Project 8 - Part 4 Screenshot 04](./screenshots/part-4-04.png)
 
-Select:
-
-**Submit request**
-
-My Access displays confirmation that the request is being processed.
+![Project 8 - Part 4 Screenshot 05](./screenshots/part-4-05.png)
 
 ---
 
-# Step 20 – Verify Pending Approval
+## Step 19 – Verify Pending Approval
 
 Navigate to:
 
 **My Access → Request history**
 
-The request displays:
+The submitted request entered:
 
-**Status: Pending approval**
+**Pending approval**
 
-This confirms that access was not automatically provisioned and that the configured governance approval workflow was triggered.
+This confirms that the package did not immediately provision access and that the configured governance approval workflow was triggered.
+
+### Pending Approval Evidence
+
+![Project 8 - Part 4 Screenshot 06](./screenshots/part-4-06.png)
+
+![Project 8 - Part 4 Screenshot 07](./screenshots/part-4-07.png)
 
 ---
 
-# Step 21 – Complete First-Level Approval
+## Step 20 – Complete First-Level Approval
 
-Sign in as the designated first-level approver.
+The designated first-level approver reviewed the request.
 
 Navigate to:
 
@@ -652,91 +762,71 @@ Requested package:
 
 `AP-IDAM-Team-Access`
 
-Approve the request and provide justification.
+The request was approved with justification.
 
-The portal confirms:
+The workflow then proceeded to the next approval stage.
 
-**Successfully approved Rajeswary_test1**
+### First Approval Evidence
 
-The request then proceeds to the next approval stage.
+![Project 8 - Part 4 Screenshot 08](./screenshots/part-4-08.png)
+
+![Project 8 - Part 4 Screenshot 09](./screenshots/part-4-09.png)
+
+![Project 8 - Part 4 Screenshot 10](./screenshots/part-4-10.png)
 
 ---
 
-# Step 22 – Validate Second/Fallback Approval
+## Step 21 – Validate Second/Fallback Approval
 
-The second stage was configured to use the requestor's manager, with Dileep as fallback/alternate approver.
+The second stage was designed to use:
 
-During lab testing, the pending action became available to:
+**Manager as approver**
+
+with:
 
 `Dileep`
 
-Sign in as Dileep.
+configured as the alternate/fallback approver.
 
-Navigate to:
+During the lab test, the pending approval action became available through the configured Dileep approval path.
 
-**My Access → Approvals**
+Dileep reviewed the request and approved it with justification.
 
-The request for:
+This validated the alternate/fallback approval mechanism.
 
-`Rajeswary_test1`
+### Fallback Approval Evidence
 
-appears as pending.
+![Project 8 - Part 4 Screenshot 11](./screenshots/part-4-11.png)
 
-Review the request.
+![Project 8 - Part 4 Screenshot 12](./screenshots/part-4-12.png)
 
-Select:
-
-**Approve**
-
-Provide justification.
-
-Example:
-
-`Due to absence of the manager, approval is provided for the newly joined IDAM department user.`
-
-Select:
-
-**Submit**
-
-The portal confirms:
-
-**Successfully approved Rajeswary_test1**
-
-This validates the fallback/alternate approval path.
+![Project 8 - Part 4 Screenshot 13](./screenshots/part-4-13.png)
 
 ---
 
-# Step 23 – Verify Resource Delivery
+## Step 22 – Verify Resource Delivery
 
-Return to the test user's My Access portal.
+After approval, the request progressed to:
 
-Navigate to:
+**Delivering**
 
-**Request history**
+This indicates that the approval workflow completed and Microsoft Entra Entitlement Management began provisioning the package resources.
 
-The request initially displays:
+The final request state was then verified as:
 
-`Delivering`
+**Delivered**
 
-This indicates that the approval workflow has completed and Microsoft Entra Entitlement Management is provisioning the package resources.
+### Delivery Evidence
 
-After provisioning completes, verify from the administrator portal:
+![Project 8 - Part 4 Screenshot 14](./screenshots/part-4-14.png)
 
-**Identity Governance → Access packages → AP-IDAM-Team-Access → Requests**
+![Project 8 - Part 4 Screenshot 15](./screenshots/part-4-15.png)
 
-Status:
-
-`Delivered`
-
-Sub-status:
-
-`Delivered`
-
-This confirms successful end-to-end access package processing.
+![Project 8 - Part 4 Screenshot 16](./screenshots/part-4-16.png)
 
 ---
 
-# Step 24 – Validate Active Group Membership
+## Step 23 – Validate Active Group Membership
 
 Sign in as:
 
@@ -746,65 +836,73 @@ Navigate to:
 
 **My Groups → Groups I am in**
 
-Verify:
+The user received active membership in the required Member groups.
 
-`LAB-IDAM-Group-01-Member`
+Examples:
 
-`LAB-IDAM-Group-02-Member`
-
-The user is now an active member of the required groups.
+- `LAB-IDAM-Group-01-Member`
+- `LAB-IDAM-Group-02-Member`
 
 The existing:
 
 `IDAM-Department-Users`
 
-group remains visible because it was used to authorize the user to request the access package.
+membership remains because this group controls eligibility to request the access package.
+
+### Membership Validation Evidence
+
+![Project 8 - Part 4 Screenshot 17](./screenshots/part-4-17.png)
 
 ---
 
-# Step 25 – Validate Active Group Ownership
+## Step 24 – Validate Active Group Ownership
 
 Navigate to:
 
 **My Groups → Groups I own**
 
-Verify:
+Verify the required Owner assignments.
 
-`LAB-IDAM-Group-03-Owner`
+Examples:
 
-`LAB-IDAM-Group-04-Owner`
+- `LAB-IDAM-Group-03-Owner`
+- `LAB-IDAM-Group-04-Owner`
 
-This confirms that Entitlement Management successfully provisioned the **Owner** resource roles.
+This validates that the access package can provision **Owner** resource roles in addition to standard Member access.
+
+### Ownership Validation Evidence
+
+![Project 8 - Part 4 Screenshot 18](./screenshots/part-4-18.png)
 
 ---
 
-# Step 26 – Validate PIM Eligible Assignment
+## Step 25 – Validate PIM Eligible Access
 
 Navigate to:
 
 **Identity Governance → Privileged Identity Management → Groups**
 
-Open one of the eligible groups.
-
-Example:
-
-`LAB-IDAM-Group-06-Eligible-Member`
-
-Navigate to:
+Open the relevant eligible group and navigate to:
 
 **Assignments → Eligible assignments**
 
-Verify:
+The test user:
 
 `Rajeswary_test1`
 
-The user appears under:
+was verified as an **Eligible** assignee.
 
-**Eligible assignments**
+This demonstrates an important distinction:
 
-This confirms that the access package successfully granted PIM eligibility rather than permanent active privileged membership.
+> The access package grants eligibility for the privileged group role. The eligible user does not automatically receive permanently active privileged access.
 
-Eligible access can subsequently be activated through PIM when required.
+The user can activate the eligible access through PIM when required.
+
+### PIM Validation Evidence
+
+![Project 8 - Part 4 Screenshot 19](./screenshots/part-4-19.png)
+
+![Project 8 - Part 4 Screenshot 20](./screenshots/part-4-20.png)
 
 ---
 
@@ -812,8 +910,8 @@ Eligible access can subsequently be activated through PIM when required.
 
 | Control | Result |
 |---|---|
-| Access package created | Successful |
 | Dedicated governance catalog | Successful |
+| Access package creation | Successful |
 | IDAM-only request scope | Successful |
 | 2 Active Member groups | Successful |
 | 2 Active Owner groups | Successful |
@@ -824,122 +922,120 @@ Eligible access can subsequently be activated through PIM when required.
 | 3 SharePoint resources | Configured |
 | Stage 1 approval | Successful |
 | Stage 2/fallback workflow | Successful |
-| Dileep fallback approval | Successful |
+| Dileep fallback approval path | Successful |
 | 4-day approval deadline | Configured |
 | 45-day assignment lifecycle | Configured |
 | User extension | Enabled |
 | Extension approval | Not required |
-| Request delivery | Delivered |
+| Resource delivery | Delivered |
 | Entra administrative roles | Lab tenant/Preview limitation |
 
 ---
 
-# Troubleshooting / Lab Limitation
+# Troubleshooting & Lab Limitation
 
 ## Microsoft Entra Role Resource – No Resource Found
 
-The intended solution included:
+The intended business solution included:
 
 - Intune Administrator
 - Helpdesk Administrator
 
-However, when adding:
+The access package interface provided:
 
 **Microsoft Entra role (Preview)**
 
-the lab tenant returned:
+However, searches for the required administrative roles returned:
 
 **No resource found**
 
-The issue persisted after validating administrative access and assigning Catalog Owner permissions.
+The issue remained after validating the administrative permissions and Catalog Owner assignment.
 
-Because the roles could not be surfaced by the shared lab tenant, they were **not falsely represented as successfully implemented**.
+Because these resources could not be surfaced by the shared lab tenant, they were **not represented as successfully implemented**.
 
-The production design still includes these two administrative roles where the required tenant capability, licensing, and Preview feature are available.
+The intended production design would include these administrative roles where the required tenant capability, licensing, permissions, and Preview feature availability support the configuration.
 
-This troubleshooting scenario was retained as part of the project evidence.
+The unsuccessful configuration attempt was retained as troubleshooting evidence because identifying and documenting environmental limitations is also an important part of identity administration.
 
 ---
 
 # Final Architecture
 
-The implemented workflow can be summarized as:
+The implemented governance workflow can be summarized as:
 
-**IDAM Department User**
-
-↓
-
-**Microsoft My Access**
-
-↓
-
-**AP-IDAM-Team-Access**
-
-↓
-
-**Stage 1 – First-Level Approver**
-
-↓
-
-**Stage 2 – Manager / Dileep Fallback**
-
-↓
-
-**Microsoft Entra Entitlement Management**
-
-↓
-
-**Automated Access Provisioning**
-
-↓
-
-**Groups + PIM Eligibility + Enterprise Applications + SharePoint**
-
-↓
-
-**45-Day Time-Bound Assignment**
-
-↓
-
-**Extension Available Without Additional Approval**
+```text
+IDAM Department User
+        |
+        v
+Microsoft My Access
+        |
+        v
+AP-IDAM-Team-Access
+        |
+        v
+Stage 1 - First-Level Approver
+        |
+        v
+Stage 2 - Manager / Fallback Approval
+        |
+        v
+Microsoft Entra Entitlement Management
+        |
+        v
+Automated Entitlement Provisioning
+        |
+        +-------------------------------+
+        |               |               |
+        v               v               v
+     Groups       Applications      SharePoint
+        |
+        v
+Active + PIM Eligible Access
+        |
+        v
+45-Day Time-Bound Assignment
+        |
+        v
+Extension Available
+```
 
 ---
 
 # Security & Governance Benefits
 
-This design provides several advantages compared with manually assigning access.
+## Least Privilege
 
-### Least Privilege
+Privileged group access is provided as **Eligible Member/Owner** where appropriate instead of permanently active privileged access.
 
-Privileged group access can be provided as **Eligible** rather than permanently active access.
+## Standardized Onboarding
 
-### Standardized Onboarding
+Users performing the same IDAM job function can receive a consistent set of entitlements from one access package.
 
-Users performing the same IDAM job function can receive a consistent access bundle.
+## Approval Governance
 
-### Approval Governance
+Access is not automatically granted when requested. The request must progress through the configured approval workflow.
 
-Access is not granted until the required approval workflow is completed.
+## Restricted Request Scope
 
-### Business Scope Restriction
+Only authorized users represented by the `IDAM-Department-Users` group can self-request the package.
 
-Only users belonging to the authorized IDAM requestor group can request the package.
+## Resilient Approval Workflow
 
-### Resilient Approval Workflow
+Alternate/fallback approval reduces the risk of an onboarding request remaining blocked when the primary approver cannot act.
 
-Alternate/fallback approvers reduce the risk of requests being blocked when a primary approver or manager is unavailable.
+## Time-Bound Access
 
-### Time-Bound Access
+The entitlement has a defined **45-day lifecycle** rather than remaining assigned indefinitely.
 
-Assignments automatically follow a defined 45-day lifecycle rather than remaining indefinitely.
+## Self-Service Access
 
-### Self-Service
+Authorized users can request the package through Microsoft My Access rather than relying entirely on administrators for manual provisioning.
 
-Authorized users can request access through My Access instead of relying entirely on administrators to manually provision each resource.
+## Reduced Administrative Effort
 
-### Reduced Administrative Effort
+Without an access package, an administrator would need to repeatedly provision multiple groups, applications, SharePoint permissions, and privileged access for each new employee.
 
-Instead of manually assigning multiple entitlements for every new team member, the access package centralizes the required resources.
+The access package centralizes these entitlements into a governed onboarding workflow.
 
 ---
 
@@ -950,20 +1046,23 @@ This project provided hands-on experience with:
 - Microsoft Entra Entitlement Management
 - Identity Governance catalogs
 - Access package design
+- Resource role assignment
 - Requestor scoping
-- Multi-stage approval workflows
+- Multi-stage approvals
 - Manager-based approval
-- Alternate and fallback approvers
+- Alternate/fallback approvers
 - PIM for Groups
-- Active vs Eligible access
-- Member vs Owner permissions
+- Eligible Member access
+- Eligible Owner access
+- Active Member access
+- Active Owner access
 - Enterprise application assignment
 - SharePoint resource roles
-- Time-bound access
-- Assignment lifecycle management
+- Time-bound entitlement management
+- Assignment lifecycle controls
 - Access extension
 - Microsoft My Access
-- End-to-end entitlement testing
+- End-to-end request testing
 - Access delivery validation
 - Identity Governance troubleshooting
 
@@ -971,60 +1070,60 @@ This project provided hands-on experience with:
 
 # Project Result
 
-The project successfully demonstrated an end-to-end **Identity Governance onboarding workflow**.
+The project successfully demonstrated an end-to-end **Microsoft Entra Identity Governance onboarding workflow**.
 
 An authorized IDAM user was able to:
 
-1. Discover the access package through My Access.
-2. Request the package with business justification.
+1. Discover the access package through Microsoft My Access.
+2. Submit an access request.
 3. Enter a controlled multi-stage approval process.
 4. Pass first-level approval.
-5. Use the configured fallback approval path.
-6. Receive the approved entitlement package.
-7. Obtain active group membership.
-8. Obtain group ownership.
-9. Receive PIM eligible privileged group access.
-10. Reach a final **Delivered** request state.
+5. Progress through the configured fallback approval path.
+6. Reach the entitlement delivery stage.
+7. Receive active group membership.
+8. Receive active group ownership.
+9. Receive PIM eligible group access.
+10. Reach the final **Delivered** request state.
 
-Although one user was used for lab testing, the same access-package design represents the onboarding requirement for **20 new IDAM team members**, reducing repetitive manual access assignments while improving governance and consistency.
+Although one test user was used for end-to-end validation, the same access package design represents the business requirement for onboarding **20 new IDAM team members** with a standardized set of entitlements.
+
+This approach reduces repetitive manual provisioning while improving **governance, consistency, least privilege, approval control, and access lifecycle management**.
 
 ---
 
-# Screenshots / Evidence
+# Screenshot Evidence
 
-Complete implementation and testing evidence is available in the:
+The complete project contains **80 screenshots** documenting the configuration, troubleshooting, approval workflow, resource delivery, and access validation.
+
+Screenshots are stored under:
 
 `/screenshots`
 
-folder.
+Naming structure:
 
-The screenshots cover:
-
-- Catalog creation
-- Catalog Owner configuration
-- Access package creation
-- Group creation
-- PIM configuration
-- Eligible Member/Owner roles
-- Enterprise applications
-- SharePoint resources
-- Microsoft Entra role Preview troubleshooting
-- Requestor scope
-- Multi-stage approval configuration
-- Alternate/fallback approver
-- 45-day lifecycle configuration
-- End-user My Access request
-- Pending approval
-- First-stage approval
-- Dileep fallback approval
-- Delivering status
-- Delivered status
-- Active group membership
-- Active group ownership
-- PIM eligible assignment validation
+```text
+part-1-01.png ... part-1-20.png
+part-2-01.png ... part-2-20.png
+part-3-01.png ... part-3-20.png
+part-4-01.png ... part-4-20.png
+```
 
 ---
 
-## Skills Demonstrated
+# Skills Demonstrated
 
-`Microsoft Entra ID` `Identity Governance` `Entitlement Management` `Access Packages` `PIM` `PIM for Groups` `IAM` `RBAC` `Microsoft 365` `SharePoint Online` `Enterprise Applications` `Access Lifecycle Management` `Least Privilege`
+`Microsoft Entra ID`  
+`Identity Governance`  
+`Entitlement Management`  
+`Access Packages`  
+`Privileged Identity Management (PIM)`  
+`PIM for Groups`  
+`IAM`  
+`RBAC`  
+`Microsoft 365`  
+`SharePoint Online`  
+`Enterprise Applications`  
+`Access Lifecycle Management`  
+`Least Privilege`  
+`Multi-Stage Approval`  
+`Identity Governance Troubleshooting`
