@@ -139,6 +139,7 @@ Assign the administrator account as:
 **Catalog Owner**
 
 This allows the administrator to manage resources and access packages within the catalog.
+![Catalog Owner Configuration](./screenshots/part-1-02.png)
 
 ---
 
