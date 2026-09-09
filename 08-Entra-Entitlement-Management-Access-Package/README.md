@@ -124,9 +124,11 @@ The dedicated Identity Governance catalog is now available for the IDAM access p
 
 ![Project 8 - Part 1 Screenshot 01](./screenshots/part-1-01.png)
 
-![Project 8 - Part 1 Screenshot 02](./screenshots/part-1-02.png)
+![Project 8 - Part 1 Screenshot 05](./screenshots/part-1-05.png)
 
-![Project 8 - Part 1 Screenshot 03](./screenshots/part-1-03.png)
+![Project 8 - Part 1 Screenshot 09](./screenshots/part-1-09.png)
+
+![Project 8 - Part 1 Screenshot 10](./screenshots/part-1-10.png)
 
 ---
 
@@ -151,6 +153,11 @@ This allows the administrator to manage resources and access packages within the
 ![Project 8 - Part 1 Screenshot 05](./screenshots/part-1-05.png)
 
 ![Project 8 - Part 1 Screenshot 06](./screenshots/part-1-06.png)
+
+![Project 8 - Part 1 Screenshot 16](./screenshots/part-1-16.png)
+
+![Project 8 - Part 1 Screenshot 17](./screenshots/part-1-17.png)
+![Project 8 - Part 1 Screenshot 19](./screenshots/part-1-19.png)
 
 ---
 
@@ -182,11 +189,9 @@ The access package acts as the central entitlement bundle for IDAM team onboardi
 
 ### Implementation Evidence
 
-![Project 8 - Part 1 Screenshot 07](./screenshots/part-1-07.png)
+![Project 8 - Part 1 Screenshot 11](./screenshots/part-1-11.png)
 
-![Project 8 - Part 1 Screenshot 08](./screenshots/part-1-08.png)
 
-![Project 8 - Part 1 Screenshot 09](./screenshots/part-1-09.png)
 
 ---
 
@@ -219,11 +224,13 @@ Therefore, the Entra administrative roles were documented as a **lab tenant / Pr
 
 ### Troubleshooting Evidence
 
-![Project 8 - Part 1 Screenshot 10](./screenshots/part-1-10.png)
-
-![Project 8 - Part 1 Screenshot 11](./screenshots/part-1-11.png)
-
 ![Project 8 - Part 1 Screenshot 12](./screenshots/part-1-12.png)
+
+![Project 8 - Part 1 Screenshot 13](./screenshots/part-1-13.png)
+
+![Project 8 - Part 1 Screenshot 14](./screenshots/part-1-14.png)
+
+![Project 8 - Part 1 Screenshot 15](./screenshots/part-1-15.png)
 
 ---
 
@@ -250,21 +257,12 @@ Configure the groups as **Security** groups with **Assigned** membership.
 
 ### Implementation Evidence
 
-![Project 8 - Part 1 Screenshot 13](./screenshots/part-1-13.png)
+![Project 8 - Part 2 Screenshot 17](./screenshots/part-2-17.png)
 
-![Project 8 - Part 1 Screenshot 14](./screenshots/part-1-14.png)
+![Project 8 - Part 2 Screenshot 14](./screenshots/part-2-14.png)
 
-![Project 8 - Part 1 Screenshot 15](./screenshots/part-1-15.png)
+![Project 8 - Part 2 Screenshot 19](./screenshots/part-1-19.png)
 
-![Project 8 - Part 1 Screenshot 16](./screenshots/part-1-16.png)
-
-![Project 8 - Part 1 Screenshot 17](./screenshots/part-1-17.png)
-
-![Project 8 - Part 1 Screenshot 18](./screenshots/part-1-18.png)
-
-![Project 8 - Part 1 Screenshot 19](./screenshots/part-1-19.png)
-
-![Project 8 - Part 1 Screenshot 20](./screenshots/part-1-20.png)
 
 ---
 
@@ -297,17 +295,6 @@ This allows privileged group access to be provided as eligibility rather than pe
 
 ### PIM Configuration Evidence
 
-![Project 8 - Part 2 Screenshot 01](./screenshots/part-2-01.png)
-
-![Project 8 - Part 2 Screenshot 02](./screenshots/part-2-02.png)
-
-![Project 8 - Part 2 Screenshot 03](./screenshots/part-2-03.png)
-
-![Project 8 - Part 2 Screenshot 04](./screenshots/part-2-04.png)
-
-![Project 8 - Part 2 Screenshot 05](./screenshots/part-2-05.png)
-
-![Project 8 - Part 2 Screenshot 06](./screenshots/part-2-06.png)
 
 ---
 
@@ -378,15 +365,14 @@ Assign the application role:
 
 ### Application Evidence
 
-![Project 8 - Part 2 Screenshot 11](./screenshots/part-2-11.png)
+![Project 8 - Part 3 Screenshot 02](./screenshots/part-3-02.png)
 
-![Project 8 - Part 2 Screenshot 12](./screenshots/part-2-12.png)
+![Project 8 - Part 3 Screenshot 03](./screenshots/part-3-03.png)
 
-![Project 8 - Part 2 Screenshot 13](./screenshots/part-2-13.png)
+![Project 8 - Part 3 Screenshot 04](./screenshots/part-3-04.png)
 
-![Project 8 - Part 2 Screenshot 14](./screenshots/part-2-14.png)
+![Project 8 - Part 3 Screenshot 05](./screenshots/part-3-05.png)
 
-![Project 8 - Part 2 Screenshot 15](./screenshots/part-2-15.png)
 
 ---
 
@@ -418,15 +404,12 @@ Add the required SharePoint resources and corresponding roles.
 
 ### SharePoint Evidence
 
-![Project 8 - Part 2 Screenshot 16](./screenshots/part-2-16.png)
+![Project 8 - Part 3 Screenshot 07](./screenshots/part-3-07.png)
 
-![Project 8 - Part 2 Screenshot 17](./screenshots/part-2-17.png)
+![Project 8 - Part 3 Screenshot 08](./screenshots/part-3-08.png)
 
-![Project 8 - Part 2 Screenshot 18](./screenshots/part-2-18.png)
+![Project 8 - Part 3 Screenshot 10](./screenshots/part-3-10.png)
 
-![Project 8 - Part 2 Screenshot 19](./screenshots/part-2-19.png)
-
-![Project 8 - Part 2 Screenshot 20](./screenshots/part-2-20.png)
 
 ---
 
@@ -462,9 +445,13 @@ This group represents authorized internal users belonging to the IDAM department
 
 ### Requestor Group Evidence
 
-![Project 8 - Part 3 Screenshot 01](./screenshots/part-3-01.png)
 
-![Project 8 - Part 3 Screenshot 02](./screenshots/part-3-02.png)
+
+![Project 8 - Part 3 Screenshot 18](./screenshots/part-3-18.png)
+
+![Project 8 - Part 3 Screenshot 19](./screenshots/part-3-19.png)
+
+![Project 8 - Part 3 Screenshot 20](./screenshots/part-3-20.png)
 
 ---
 
@@ -495,6 +482,7 @@ This limits self-service access requests to authorized members of the IDAM reque
 ![Project 8 - Part 3 Screenshot 04](./screenshots/part-3-04.png)
 
 ![Project 8 - Part 3 Screenshot 05](./screenshots/part-3-05.png)
+![Project 8 - Part 4 Screenshot 01](./screenshots/part-4-01.png)
 
 ---
 
@@ -538,11 +526,11 @@ This prevents the request from remaining unattended if the primary approver is u
 
 ### First-Level Approval Evidence
 
-![Project 8 - Part 3 Screenshot 06](./screenshots/part-3-06.png)
+![Project 8 - Part 3 Screenshot 11](./screenshots/part-3-11.png)
 
-![Project 8 - Part 3 Screenshot 07](./screenshots/part-3-07.png)
+![Project 8 - Part 3 Screenshot 12](./screenshots/part-3-12.png)
 
-![Project 8 - Part 3 Screenshot 08](./screenshots/part-3-08.png)
+
 
 ---
 
@@ -576,11 +564,8 @@ If the relevant approver is unavailable or cannot act according to the configure
 
 ### Second-Level Approval Evidence
 
-![Project 8 - Part 3 Screenshot 09](./screenshots/part-3-09.png)
+![Project 8 - Part 3 Screenshot 13](./screenshots/part-3-13.png)
 
-![Project 8 - Part 3 Screenshot 10](./screenshots/part-3-10.png)
-
-![Project 8 - Part 3 Screenshot 11](./screenshots/part-3-11.png)
 
 ---
 
@@ -620,11 +605,6 @@ This creates a fixed 45-day entitlement lifecycle while allowing users to reques
 
 ### Lifecycle Evidence
 
-![Project 8 - Part 3 Screenshot 12](./screenshots/part-3-12.png)
-
-![Project 8 - Part 3 Screenshot 13](./screenshots/part-3-13.png)
-
-![Project 8 - Part 3 Screenshot 14](./screenshots/part-3-14.png)
 
 ---
 
@@ -647,11 +627,8 @@ Configuration included:
 
 ### Policy Evidence
 
-![Project 8 - Part 3 Screenshot 15](./screenshots/part-3-15.png)
-
 ![Project 8 - Part 3 Screenshot 16](./screenshots/part-3-16.png)
 
-![Project 8 - Part 3 Screenshot 17](./screenshots/part-3-17.png)
 
 ---
 
@@ -670,7 +647,7 @@ The Microsoft Entra administrative role resources remained unavailable because o
 
 ### Final Configuration Evidence
 
-![Project 8 - Part 3 Screenshot 18](./screenshots/part-3-18.png)
+![Project 8 - Part 3 Screenshot 17](./screenshots/part-3-17.png)
 
 ![Project 8 - Part 3 Screenshot 19](./screenshots/part-3-19.png)
 
@@ -696,9 +673,9 @@ The visibility of the package to the authorized test user validates the configur
 
 ### Test Evidence
 
-![Project 8 - Part 4 Screenshot 01](./screenshots/part-4-01.png)
+![Project 8 - Part 3 Screenshot 20](./screenshots/part-3-20.png)
 
-![Project 8 - Part 4 Screenshot 02](./screenshots/part-4-02.png)
+
 
 ---
 
@@ -718,10 +695,12 @@ The request was then submitted through My Access.
 
 ### Request Evidence
 
+![Project 8 - Part 4 Screenshot 01](./screenshots/part-4-01.png)
+
+![Project 8 - Part 4 Screenshot 02](./screenshots/part-4-02.png)
+
 ![Project 8 - Part 4 Screenshot 03](./screenshots/part-4-03.png)
-
 ![Project 8 - Part 4 Screenshot 04](./screenshots/part-4-04.png)
-
 ![Project 8 - Part 4 Screenshot 05](./screenshots/part-4-05.png)
 
 ---
@@ -742,7 +721,7 @@ This confirms that the package did not immediately provision access and that the
 
 ![Project 8 - Part 4 Screenshot 06](./screenshots/part-4-06.png)
 
-![Project 8 - Part 4 Screenshot 07](./screenshots/part-4-07.png)
+
 
 ---
 
@@ -820,9 +799,8 @@ The final request state was then verified as:
 
 ![Project 8 - Part 4 Screenshot 14](./screenshots/part-4-14.png)
 
-![Project 8 - Part 4 Screenshot 15](./screenshots/part-4-15.png)
+![Project 8 - Part 4 Screenshot 18](./screenshots/part-4-18.png)
 
-![Project 8 - Part 4 Screenshot 16](./screenshots/part-4-16.png)
 
 ---
 
@@ -851,7 +829,7 @@ membership remains because this group controls eligibility to request the access
 
 ### Membership Validation Evidence
 
-![Project 8 - Part 4 Screenshot 17](./screenshots/part-4-17.png)
+![Project 8 - Part 4 Screenshot 19](./screenshots/part-4-17.png)
 
 ---
 
